@@ -1,0 +1,12 @@
+# Ignore SSH keys
+Keys
+Keys.pub
+packer-ami-project/
+WesleyMarshall_PackerProject/
+
+# Ignore system files
+*.DS_Store
+*.log
+
+# Ignore editor settings
+.vscode/

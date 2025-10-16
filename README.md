@@ -34,10 +34,10 @@ The following plugins are required, but not installed:
 Did you run packer init for this project ?
 
 
-➜  packer-ami-project packer plugins install github.com/hashicorp/amazon                                                                                       
-
+➜  packer-ami-project packer plugins install github.com/hashicorp/amazon                                                                                      
 Installed plugin github.com/hashicorp/amazon v1.5.0 in "/home/wesley/.config/packer/plugins/github.com/hashicorp/amazon/packer-plugin-amazon_v1.5.0_x5.0_linux_amd64"
 
+**Creating File Structure**
 Open and update VSCode
 Verify pwd
 cd 05_Packers
@@ -61,7 +61,7 @@ error on line 40
 use this = temporary_security_group_source_cidrs = "[0.0.0.0/0]"
 
 **Git Repository Creation**
-Created wes_packerproject, public, enabled read me
+Created WesleyMarshal_PackerProject, public, did not enabled read me
 SSH git@github.com:wesleyharrisonmarshall-bot/wes_packerproject.git
 GitHub CLI gh repo clone wesleyharrisonmarshall-bot/wes_packerproject
 ssh-keygen -t rsa, saved in packer-project-ami folder, no pass
@@ -77,3 +77,5 @@ cat ~/.ssh/id_ed25519.pub
 git remote set-url origin git@github.com:wesleyhmarshall/packer-ami-project.git
 ssh -T git@github.com                                                      
 Hi wesleyharrisonmarshall-bot! You've successfully authenticated, but GitHub does not provide shell access.
+git push -u origin main
+I CAN SEE MY WORK ON GITHUB!!!!!
