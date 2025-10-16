@@ -69,3 +69,11 @@ git clone git@github.com:wesleyharrisonmarshall-bot/wes_packerproject.git
 git config --global user.email "wesleyharrisonmarshall@gmail.com"
 git init
 git branch -m main
+git remote add origin https://github.com/wesleyhmarshall/packer-ami-project.git
+git add .
+I couldn't login using username and password
+ssh-keygen -t ed25519 -C "wesleyharrisonmarshall@gmail.com"
+cat ~/.ssh/id_ed25519.pub
+git remote set-url origin git@github.com:wesleyhmarshall/packer-ami-project.git
+ssh -T git@github.com                                                      
+Hi wesleyharrisonmarshall-bot! You've successfully authenticated, but GitHub does not provide shell access.
