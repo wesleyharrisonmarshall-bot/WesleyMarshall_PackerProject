@@ -79,3 +79,5 @@ ssh -T git@github.com
 Hi wesleyharrisonmarshall-bot! You've successfully authenticated, but GitHub does not provide shell access.
 git push -u origin main
 I CAN SEE MY WORK ON GITHUB!!!!!
+
+I had to add .gitignore because I embedded my git clone into my packer-ami-project
