@@ -43,22 +43,22 @@ source "amazon-ebs" "amazon_linux_2023" {
 build {
   sources = ["source.amazon-ebs.amazon_linux_2023"]
 
-  provisioner "shell" {
-    inline = [
-      "echo 'Running CIS hardening script...'",
-      "curl -O /mnt/c/Users/wesle/Desktop/DEVOPS/packer-ami-project/scripst/cis-hardening.sh",
-      "chmod +x cis-hardening.sh",
-      "sudo ./cis-hardening.sh"
-    ]
+  # Upload and run CIS hardening script
+  provisioner "file" {
+    source      = "scripts/cis-hardening.sh"
+    destination = "/tmp/cis-hardening.sh"
   }
 
   provisioner "shell" {
     inline = [
-      "echo 'Installing Apache (httpd)...'",
-      "sudo dnf install -y httpd",
-      "sudo systemctl enable httpd",
-      "sudo systemctl start httpd",
-      "echo '<h1>Welcome to your hardened AMI</h1>' | sudo tee /var/www/html/index.html"
+      "chmod +x /tmp/cis-hardening.sh",
+      "sudo /tmp/cis-hardening.sh"
     ]
+  }
+
+  # Run Apache setup script directly from local path
+  provisioner "shell" {
+    script          = "scripts/httpd-setup.sh"
+    execute_command = "sudo bash '{{ .Path }}'"
   }
 }
