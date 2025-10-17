@@ -81,3 +81,31 @@ cat ~/.ssh/id_ed25519.pub
 git remote set-url origin git@github.com:wesleyhmarshall/packer-ami-project.git
 ssh -T git@github.com                                                      
 Hi wesleyharrisonmarshall-bot! You've successfully authenticated, but GitHub does not provide shell access.
+
+**Create AWS ECS from AMI**
+AMI created and verified on AWS. -see screenshot-
+Created new EC2 instance - ec2-user@ip-172-31-25-246
+ssh -i ~/devops-key.pem ec2-user@18.217.255.243
+Confirmed CIS SSH Hardening: sudo grep -E "PermitRootLogin|Protocol|PermitEmptyPasswords" /etc/ssh/sshd_config
+Confirmed HTTP Apache Server: curl http://localhost
+
+**Terminate Cleanup**
+1. Deregister the AMI
+This removes the AMI from your account but does not delete associated snapshots.
+🔧 Steps:
+- Go to the EC2 Dashboard in AWS Console.
+- Click AMIs in the left sidebar.
+- Select your custom AMI.
+- Click Actions > Deregister.
+- Confirm the deregistration.
+📝 Note: Deregistering an AMI makes it unusable for launching new instances, but the snapshot remains.
+
+
+2. Delete Associated Snapshots
+After deregistering, you’ll need to manually delete the EBS snapshot created during the AMI build.
+🔧 Steps:
+- In the EC2 Dashboard, click Snapshots.
+- Find the snapshot linked to your AMI (check the Description or Tags).
+- Select the snapshot and click Actions > Delete Snapshot.
+- Confirm deletion.
+💡 Tip: You can tag your AMI and snapshot during Packer build to make them easier to identify.
